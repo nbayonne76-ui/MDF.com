@@ -220,6 +220,39 @@ ul { list-style: none; }
   background: rgba(201,168,76,0.06);
 }
 
+/* --- Bouton langue FR/EN --- */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(201,168,76,0.12);
+  border: 1.5px solid rgba(201,168,76,0.4);
+  border-radius: 100px;
+  color: var(--color-secondary);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: var(--font-body);
+  letter-spacing: 0.05em;
+}
+
+.lang-btn:hover {
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  border-color: var(--color-secondary);
+}
+
+.lang-icon { font-size: 0.95rem; }
+
 /* --- Mobile toggle --- */
 .nav-toggle {
   display: none;
