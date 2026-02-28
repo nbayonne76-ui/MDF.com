@@ -2,136 +2,155 @@
    MOBILIER DE FRANCE - script.js
    ========================================== */
 
-/* --- NAVBAR : scroll effect & mobile toggle --- */
-const navbar = document.getElementById('navbar');
-const navToggle = document.getElementById('navToggle');
+/* ==========================================
+   NAVIGATION PAR ONGLETS
+   ========================================== */
+function switchTab(tabName) {
+  // Masquer tous les panels
+  document.querySelectorAll('.tab-panel').forEach(panel => {
+    panel.classList.remove('active');
+  });
+
+  // Désactiver tous les onglets de la navbar
+  document.querySelectorAll('.nav-tab').forEach(tab => {
+    tab.classList.remove('active');
+  });
+
+  // Afficher le panel cible
+  const targetPanel = document.getElementById('tab-' + tabName);
+  if (targetPanel) {
+    targetPanel.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Activer l'onglet correspondant dans la navbar
+  const targetTab = document.querySelector(`.nav-tab[data-tab="${tabName}"]`);
+  if (targetTab) {
+    targetTab.classList.add('active');
+  }
+
+  // Fermer le menu mobile si ouvert
+  navLinks.classList.remove('open');
+
+  // Déclencher les animations spécifiques à chaque onglet
+  if (tabName === 'qualite') initProcessSteps();
+  if (tabName === 'accueil') initStats();
+}
+
+/* --- Clic sur les onglets de la navbar --- */
 const navLinks = document.getElementById('navLinks');
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 60) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', (e) => {
+    e.preventDefault();
+    switchTab(tab.dataset.tab);
+  });
 });
 
+/* --- Mobile toggle --- */
+const navToggle = document.getElementById('navToggle');
 navToggle.addEventListener('click', () => {
   navLinks.classList.toggle('open');
 });
 
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
+/* ==========================================
+   STATS : compteurs animés (onglet Accueil)
+   ========================================== */
+let statsAnimated = false;
+
+function initStats() {
+  if (statsAnimated) return;
+  statsAnimated = true;
+
+  document.querySelectorAll('.stat-number[data-target]').forEach(el => {
+    const target = parseInt(el.dataset.target, 10);
+    const suffix = el.dataset.suffix || '';
+    animateCounter(el, target, suffix);
   });
-});
-
-/* --- PROCESS STEPS : animation au scroll --- */
-const processSteps = document.querySelectorAll('.process-step');
-let currentStep = 0;
-
-function animateSteps() {
-  processSteps.forEach((step, i) => step.classList.remove('active'));
-  processSteps[currentStep].classList.add('active');
-  currentStep = (currentStep + 1) % processSteps.length;
 }
 
-const processSection = document.querySelector('.process-steps');
-if (processSection) {
-  const observer = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      animateSteps();
-      setInterval(animateSteps, 1800);
-      observer.disconnect();
-    }
-  }, { threshold: 0.5 });
-  observer.observe(processSection);
-}
-
-/* --- STATS : compteur animé --- */
-function animateCounter(el, target, duration = 1500) {
-  const start = 0;
+function animateCounter(el, target, suffix, duration = 1400) {
   const step = (timestamp) => {
     if (!el._startTime) el._startTime = timestamp;
     const progress = Math.min((timestamp - el._startTime) / duration, 1);
-    const current = Math.floor(progress * target);
-    el.textContent = current + (el.dataset.suffix || '');
+    el.textContent = Math.floor(progress * target) + suffix;
     if (progress < 1) requestAnimationFrame(step);
-    else el.textContent = target + (el.dataset.suffix || '');
+    else el.textContent = target + suffix;
   };
   requestAnimationFrame(step);
 }
 
-const statNumbers = document.querySelectorAll('.stat-number');
-const statsObserver = new IntersectionObserver((entries) => {
-  if (entries[0].isIntersecting) {
-    statNumbers.forEach(el => {
-      const raw = el.textContent.trim();
-      const num = parseInt(raw.replace(/\D/g, ''), 10);
-      if (!isNaN(num)) {
-        const suffix = raw.replace(/[0-9]/g, '');
-        el.dataset.suffix = suffix;
-        animateCounter(el, num);
-      }
-    });
-    statsObserver.disconnect();
-  }
-}, { threshold: 0.5 });
+// Lancer les stats au chargement (onglet accueil actif par défaut)
+initStats();
 
-const statsSection = document.querySelector('.stats');
-if (statsSection) statsObserver.observe(statsSection);
+/* ==========================================
+   PROCESS STEPS : animation (onglet Qualité)
+   ========================================== */
+let processInterval = null;
+let currentStep = 0;
 
-/* --- SAV BOT --- */
-const botMessages = document.getElementById('botMessages');
-const botInput = document.getElementById('botInput');
-const botSuggestions = document.getElementById('botSuggestions');
+function initProcessSteps() {
+  const steps = document.querySelectorAll('.process-step');
+  if (!steps.length) return;
 
-// Réponses simples du bot
+  // Réinitialiser
+  clearInterval(processInterval);
+  currentStep = 0;
+  steps.forEach(s => s.classList.remove('active'));
+  steps[0].classList.add('active');
+
+  processInterval = setInterval(() => {
+    steps.forEach(s => s.classList.remove('active'));
+    currentStep = (currentStep + 1) % steps.length;
+    steps[currentStep].classList.add('active');
+  }, 1800);
+}
+
+/* ==========================================
+   SAV BOT (onglet Assistance)
+   ========================================== */
 const botResponses = {
   'suivre ma livraison': 'Pour suivre votre livraison, veuillez nous communiquer votre numéro de commande. Vous pouvez également télécharger notre application mobile pour un suivi en temps réel.',
   'signaler un problème': 'Nous sommes désolés pour ce désagrément. Pour signaler un problème, merci de préciser :\n• Votre numéro de commande\n• La nature du problème\n• Des photos si possible\nNous traiterons votre demande dans les 24h.',
-  'contacter le sav': 'Notre équipe SAV est disponible du lundi au vendredi, de 9h à 18h.\n📧 sav@mdf.com\n\nVous pouvez aussi remplir le formulaire de contact en bas de page.',
-  'default': 'Merci pour votre message. Un conseiller va vous répondre prochainement. Pour une réponse rapide, n\'hésitez pas à utiliser les boutons de raccourci ci-dessus.'
+  'contacter le sav': 'Notre équipe SAV est disponible du lundi au vendredi, de 9h à 18h.\n📧 sav@mdf.com\n\nVous pouvez aussi remplir le formulaire dans l\'onglet Contact.',
+  'default': 'Merci pour votre message. Un conseiller va vous répondre prochainement. Pour une réponse rapide, utilisez les boutons de raccourci ci-dessus.'
 };
 
 function addBotMessage(text, isUser = false) {
+  const botMessages = document.getElementById('botMessages');
   const div = document.createElement('div');
   div.className = `bot-message bot-message--${isUser ? 'user' : 'bot'}`;
-
   const bubble = document.createElement('div');
   bubble.className = 'bot-bubble';
   bubble.textContent = text;
-
   div.appendChild(bubble);
   botMessages.appendChild(div);
   botMessages.scrollTop = botMessages.scrollHeight;
 }
 
 function addTypingIndicator() {
+  const botMessages = document.getElementById('botMessages');
   const div = document.createElement('div');
   div.className = 'bot-message bot-message--bot';
   div.id = 'typingIndicator';
-
   const bubble = document.createElement('div');
   bubble.className = 'bot-bubble';
-  bubble.style.opacity = '0.6';
+  bubble.style.opacity = '0.5';
   bubble.textContent = '...';
-
   div.appendChild(bubble);
   botMessages.appendChild(div);
   botMessages.scrollTop = botMessages.scrollHeight;
 }
 
 function removeTypingIndicator() {
-  const indicator = document.getElementById('typingIndicator');
-  if (indicator) indicator.remove();
+  const el = document.getElementById('typingIndicator');
+  if (el) el.remove();
 }
 
 function getBotResponse(message) {
   const lower = message.toLowerCase().trim();
   for (const key in botResponses) {
-    if (key !== 'default' && lower.includes(key)) {
-      return botResponses[key];
-    }
+    if (key !== 'default' && lower.includes(key)) return botResponses[key];
   }
   return botResponses['default'];
 }
@@ -139,14 +158,9 @@ function getBotResponse(message) {
 function sendMessage(text) {
   if (!text.trim()) return;
   addBotMessage(text, true);
-
-  // Cacher les suggestions après le premier message
-  if (botSuggestions) {
-    botSuggestions.style.display = 'none';
-  }
-
+  const suggestions = document.getElementById('botSuggestions');
+  if (suggestions) suggestions.style.display = 'none';
   addTypingIndicator();
-
   setTimeout(() => {
     removeTypingIndicator();
     addBotMessage(getBotResponse(text));
@@ -154,29 +168,28 @@ function sendMessage(text) {
 }
 
 function sendBotMessage() {
-  const text = botInput.value.trim();
+  const input = document.getElementById('botInput');
+  const text = input.value.trim();
   if (!text) return;
-  botInput.value = '';
+  input.value = '';
   sendMessage(text);
 }
 
-function sendSuggestion(text) {
-  sendMessage(text);
-}
+function sendSuggestion(text) { sendMessage(text); }
 
 function handleBotKey(event) {
-  if (event.key === 'Enter') {
-    sendBotMessage();
-  }
+  if (event.key === 'Enter') sendBotMessage();
 }
 
-/* --- CONTACT FORM --- */
+/* ==========================================
+   FORMULAIRE DE CONTACT (onglet Contact)
+   ========================================== */
 function handleContactForm(event) {
   event.preventDefault();
   const form = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
-
   const btn = form.querySelector('.btn-primary');
+
   btn.textContent = 'Envoi en cours...';
   btn.disabled = true;
 
@@ -185,30 +198,6 @@ function handleContactForm(event) {
     btn.disabled = false;
     success.classList.add('visible');
     form.reset();
-
-    setTimeout(() => {
-      success.classList.remove('visible');
-    }, 5000);
+    setTimeout(() => success.classList.remove('visible'), 5000);
   }, 1200);
 }
-
-/* --- SCROLL REVEAL : animation d'apparition --- */
-const revealElements = document.querySelectorAll(
-  '.app-card, .stat-item, .qualite-list li, .contact-item'
-);
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.style.opacity = '1';
-      entry.target.style.transform = 'translateY(0)';
-    }
-  });
-}, { threshold: 0.1 });
-
-revealElements.forEach((el, i) => {
-  el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
-  el.style.transition = `opacity 0.5s ease ${i * 0.07}s, transform 0.5s ease ${i * 0.07}s`;
-  revealObserver.observe(el);
-});

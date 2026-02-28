@@ -12,323 +12,339 @@
 </head>
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- ===================== NAVBAR / ONGLETS ===================== -->
   <nav class="navbar" id="navbar">
     <div class="nav-container">
       <div class="nav-logo">
         <span class="logo-mdf">MDF</span>
         <span class="logo-text">Mobilier de France</span>
       </div>
+
       <ul class="nav-links" id="navLinks">
-        <li><a href="#accueil">Accueil</a></li>
-        <li><a href="#app">Notre Application</a></li>
-        <li><a href="#qualite">Qualité</a></li>
-        <li><a href="#sav">Assistance</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#" class="nav-tab active" data-tab="accueil">Accueil</a></li>
+        <li><a href="#" class="nav-tab" data-tab="app">Notre Application</a></li>
+        <li><a href="#" class="nav-tab" data-tab="qualite">Qualité</a></li>
+        <li><a href="#" class="nav-tab" data-tab="sav">Assistance</a></li>
+        <li><a href="#" class="nav-tab" data-tab="contact">Contact</a></li>
       </ul>
+
       <button class="nav-toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
-  <!-- HERO -->
-  <section class="hero" id="accueil">
-    <div class="hero-content">
-      <div class="hero-badge">Excellence depuis 1962</div>
-      <h1 class="hero-title">
-        L'art de livrer<br />
-        <span class="hero-highlight">la qualité</span>
-      </h1>
-      <p class="hero-subtitle">
-        Mobilier de France s'engage à vous offrir une expérience de livraison irréprochable,
-        grâce à notre système de traçabilité qualité de bout en bout.
-      </p>
-      <div class="hero-actions">
-        <a href="#app" class="btn btn-primary">Découvrir l'application</a>
-        <a href="#sav" class="btn btn-secondary">Assistance client</a>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="hero-card">
-        <div class="card-icon">✓</div>
-        <div class="card-text">Livraison vérifiée</div>
-      </div>
-      <div class="hero-card hero-card--offset">
-        <div class="card-icon">📦</div>
-        <div class="card-text">Suivi en temps réel</div>
-      </div>
-      <div class="hero-card hero-card--offset2">
-        <div class="card-icon">⭐</div>
-        <div class="card-text">Qualité garantie</div>
-      </div>
-    </div>
-  </section>
+  <!-- ===================== ONGLET : ACCUEIL ===================== -->
+  <div class="tab-panel active" id="tab-accueil">
 
-  <!-- STATS -->
-  <section class="stats">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-number">60+</div>
-          <div class="stat-label">Années d'expérience</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">100%</div>
-          <div class="stat-label">Livraisons tracées</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">4</div>
-          <div class="stat-label">Acteurs du processus</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">24/7</div>
-          <div class="stat-label">Support disponible</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- APPLICATION -->
-  <section class="app-section" id="app">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Application Mobile</span>
-        <h2 class="section-title">Une app pour chaque acteur</h2>
-        <p class="section-desc">
-          Notre application de traçabilité qualité connecte tous les maillons de la chaîne —
-          du fournisseur au client final — en passant par le chauffeur et le showroom.
-        </p>
-      </div>
-
-      <div class="app-grid">
-        <div class="app-card">
-          <div class="app-card-icon">🏭</div>
-          <h3>Fournisseur</h3>
-          <p>Préparation des commandes, contrôle qualité à la source, photos de départ et chargement camion.</p>
-        </div>
-        <div class="app-card">
-          <div class="app-card-icon">🚛</div>
-          <h3>Chauffeur</h3>
-          <p>Prise en charge des livraisons, gestion des tournées, photos à la livraison et signalement d'incidents.</p>
-        </div>
-        <div class="app-card">
-          <div class="app-card-icon">🏪</div>
-          <h3>Showroom</h3>
-          <p>Réception des meubles, contrôle à la livraison, validation ou signalement des défauts.</p>
-        </div>
-        <div class="app-card">
-          <div class="app-card-icon">👤</div>
-          <h3>Client</h3>
-          <p>Suivi de sa commande, réception confirmée avec signature électronique et avis qualité.</p>
-        </div>
-      </div>
-
-      <div class="app-download">
-        <p class="download-label">Application disponible prochainement sur</p>
-        <div class="download-buttons">
-          <div class="download-btn download-btn--ios">
-            <span class="download-icon">🍎</span>
-            <div>
-              <div class="download-sub">Disponible sur</div>
-              <div class="download-name">App Store</div>
-            </div>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-left">
+          <div class="hero-badge">Excellence depuis 1962</div>
+          <h1 class="hero-title">
+            L'art de livrer<br />
+            <span class="hero-highlight">la qualité</span>
+          </h1>
+          <p class="hero-subtitle">
+            Mobilier de France s'engage à vous offrir une expérience de livraison irréprochable,
+            grâce à notre système de traçabilité qualité de bout en bout.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="switchTab('app')">Découvrir l'application</button>
+            <button class="btn btn-secondary" onclick="switchTab('sav')">Assistance client</button>
           </div>
-          <div class="download-btn download-btn--android">
-            <span class="download-icon">▶</span>
-            <div>
-              <div class="download-sub">Disponible sur</div>
-              <div class="download-name">Google Play</div>
-            </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="card-icon">✓</div>
+            <div class="card-text">Livraison vérifiée</div>
+          </div>
+          <div class="hero-card hero-card--offset">
+            <div class="card-icon">📦</div>
+            <div class="card-text">Suivi en temps réel</div>
+          </div>
+          <div class="hero-card hero-card--offset2">
+            <div class="card-icon">⭐</div>
+            <div class="card-text">Qualité garantie</div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- QUALITE -->
-  <section class="qualite-section" id="qualite">
-    <div class="container">
-      <div class="qualite-inner">
-        <div class="qualite-text">
+    <section class="stats">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number" data-target="60" data-suffix="+">60+</div>
+            <div class="stat-label">Années d'expérience</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="100" data-suffix="%">100%</div>
+            <div class="stat-label">Livraisons tracées</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-target="4" data-suffix="">4</div>
+            <div class="stat-label">Acteurs du processus</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-static="24/7">24/7</div>
+            <div class="stat-label">Support disponible</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===================== ONGLET : APPLICATION ===================== -->
+  <div class="tab-panel" id="tab-app">
+    <section class="page-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Application Mobile</span>
+          <h2 class="section-title">Une app pour chaque acteur</h2>
+          <p class="section-desc">
+            Notre application de traçabilité qualité connecte tous les maillons de la chaîne —
+            du fournisseur au client final — en passant par le chauffeur et le showroom.
+          </p>
+        </div>
+
+        <div class="app-grid">
+          <div class="app-card">
+            <div class="app-card-icon">🏭</div>
+            <h3>Fournisseur</h3>
+            <p>Préparation des commandes, contrôle qualité à la source, photos de départ et chargement camion.</p>
+          </div>
+          <div class="app-card">
+            <div class="app-card-icon">🚛</div>
+            <h3>Chauffeur</h3>
+            <p>Prise en charge des livraisons, gestion des tournées, photos à la livraison et signalement d'incidents.</p>
+          </div>
+          <div class="app-card">
+            <div class="app-card-icon">🏪</div>
+            <h3>Showroom</h3>
+            <p>Réception des meubles, contrôle à la livraison, validation ou signalement des défauts.</p>
+          </div>
+          <div class="app-card">
+            <div class="app-card-icon">👤</div>
+            <h3>Client</h3>
+            <p>Suivi de sa commande, réception confirmée avec signature électronique et avis qualité.</p>
+          </div>
+        </div>
+
+        <div class="app-download">
+          <p class="download-label">Application disponible prochainement sur</p>
+          <div class="download-buttons">
+            <div class="download-btn">
+              <span class="download-icon">🍎</span>
+              <div>
+                <div class="download-sub">Disponible sur</div>
+                <div class="download-name">App Store</div>
+              </div>
+            </div>
+            <div class="download-btn">
+              <span class="download-icon">▶</span>
+              <div>
+                <div class="download-sub">Disponible sur</div>
+                <div class="download-name">Google Play</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===================== ONGLET : QUALITÉ ===================== -->
+  <div class="tab-panel" id="tab-qualite">
+    <section class="page-section">
+      <div class="container">
+        <div class="section-header">
           <span class="section-tag">Notre engagement</span>
           <h2 class="section-title">Zéro compromis sur la qualité</h2>
-          <p>
-            Chaque meuble qui quitte nos ateliers est photographié, référencé et suivi.
-            Grâce à notre système de traçabilité numérique, vous disposez d'une preuve
-            photo à chaque étape — de la fabrication à votre domicile.
+          <p class="section-desc">
+            Chaque meuble est photographié, référencé et suivi à chaque étape —
+            de la fabrication à votre domicile.
           </p>
-          <ul class="qualite-list">
-            <li>
-              <span class="qualite-check">✓</span>
-              <span>Photos de contrôle avant expédition</span>
-            </li>
-            <li>
-              <span class="qualite-check">✓</span>
-              <span>Vérification au chargement du camion</span>
-            </li>
-            <li>
-              <span class="qualite-check">✓</span>
-              <span>Contrôle à la réception en showroom</span>
-            </li>
-            <li>
-              <span class="qualite-check">✓</span>
-              <span>Confirmation de livraison chez le client</span>
-            </li>
-            <li>
-              <span class="qualite-check">✓</span>
-              <span>Historique complet accessible en ligne</span>
-            </li>
-          </ul>
         </div>
-        <div class="qualite-visual">
-          <div class="process-steps">
-            <div class="process-step active">
-              <div class="step-num">1</div>
-              <div class="step-info">
-                <strong>Fournisseur</strong>
-                <span>Contrôle qualité</span>
-              </div>
-            </div>
-            <div class="process-connector"></div>
-            <div class="process-step">
-              <div class="step-num">2</div>
-              <div class="step-info">
-                <strong>Transport</strong>
-                <span>Chargement vérifié</span>
-              </div>
-            </div>
-            <div class="process-connector"></div>
-            <div class="process-step">
-              <div class="step-num">3</div>
-              <div class="step-info">
-                <strong>Showroom</strong>
-                <span>Réception contrôlée</span>
-              </div>
-            </div>
-            <div class="process-connector"></div>
-            <div class="process-step">
-              <div class="step-num">4</div>
-              <div class="step-info">
-                <strong>Client</strong>
-                <span>Livraison confirmée</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- SAV BOT -->
-  <section class="sav-section" id="sav">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Service Après-Vente</span>
-        <h2 class="section-title">Assistance intelligente 24h/24</h2>
-        <p class="section-desc">
-          Notre assistant virtuel est disponible à tout moment pour répondre à vos questions,
-          suivre vos dossiers SAV et vous orienter vers le bon interlocuteur.
-        </p>
-      </div>
+        <div class="qualite-inner">
+          <div class="qualite-text">
+            <p>
+              Grâce à notre système de traçabilité numérique, vous disposez d'une preuve
+              photo à chaque étape. Fini les litiges sans preuve : tout est documenté,
+              daté et archivé.
+            </p>
+            <ul class="qualite-list">
+              <li><span class="qualite-check">✓</span><span>Photos de contrôle avant expédition</span></li>
+              <li><span class="qualite-check">✓</span><span>Vérification au chargement du camion</span></li>
+              <li><span class="qualite-check">✓</span><span>Contrôle à la réception en showroom</span></li>
+              <li><span class="qualite-check">✓</span><span>Confirmation de livraison chez le client</span></li>
+              <li><span class="qualite-check">✓</span><span>Historique complet accessible en ligne</span></li>
+            </ul>
+          </div>
 
-      <!-- SAV BOT WIDGET -->
-      <div class="bot-container">
-        <div class="bot-header">
-          <div class="bot-avatar">MDF</div>
-          <div class="bot-info">
-            <strong>Assistant MDF</strong>
-            <span class="bot-status">En ligne</span>
-          </div>
-        </div>
-        <div class="bot-messages" id="botMessages">
-          <div class="bot-message bot-message--bot">
-            <div class="bot-bubble">
-              Bonjour ! Je suis l'assistant Mobilier de France. Comment puis-je vous aider aujourd'hui ?
+          <div class="qualite-visual">
+            <div class="process-steps" id="processSteps">
+              <div class="process-step active">
+                <div class="step-num">1</div>
+                <div class="step-info">
+                  <strong>Fournisseur</strong>
+                  <span>Contrôle qualité à la source</span>
+                </div>
+              </div>
+              <div class="process-connector"></div>
+              <div class="process-step">
+                <div class="step-num">2</div>
+                <div class="step-info">
+                  <strong>Transport</strong>
+                  <span>Chargement vérifié et photographié</span>
+                </div>
+              </div>
+              <div class="process-connector"></div>
+              <div class="process-step">
+                <div class="step-num">3</div>
+                <div class="step-info">
+                  <strong>Showroom</strong>
+                  <span>Réception contrôlée</span>
+                </div>
+              </div>
+              <div class="process-connector"></div>
+              <div class="process-step">
+                <div class="step-num">4</div>
+                <div class="step-info">
+                  <strong>Client</strong>
+                  <span>Livraison confirmée et signée</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="bot-suggestions" id="botSuggestions">
-          <button class="suggestion-btn" onclick="sendSuggestion('Suivre ma livraison')">Suivre ma livraison</button>
-          <button class="suggestion-btn" onclick="sendSuggestion('Signaler un problème')">Signaler un problème</button>
-          <button class="suggestion-btn" onclick="sendSuggestion('Contacter le SAV')">Contacter le SAV</button>
-        </div>
-        <div class="bot-input">
-          <input type="text" id="botInput" placeholder="Posez votre question..." onkeydown="handleBotKey(event)" />
-          <button class="bot-send" onclick="sendBotMessage()">Envoyer</button>
-        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <!-- CONTACT -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Nous contacter</span>
-        <h2 class="section-title">Une question ? Écrivez-nous</h2>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-item">
-            <span class="contact-icon">📍</span>
-            <div>
-              <strong>Siège social</strong>
-              <p>France</p>
+  <!-- ===================== ONGLET : ASSISTANCE ===================== -->
+  <div class="tab-panel" id="tab-sav">
+    <section class="page-section page-section--dark">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Service Après-Vente</span>
+          <h2 class="section-title" style="color: white;">Assistance intelligente 24h/24</h2>
+          <p class="section-desc" style="color: rgba(255,255,255,0.65);">
+            Notre assistant virtuel est disponible à tout moment pour répondre à vos questions,
+            suivre vos dossiers SAV et vous orienter vers le bon interlocuteur.
+          </p>
+        </div>
+
+        <div class="bot-container">
+          <div class="bot-header">
+            <div class="bot-avatar">MDF</div>
+            <div class="bot-info">
+              <strong>Assistant MDF</strong>
+              <span class="bot-status">En ligne</span>
             </div>
           </div>
-          <div class="contact-item">
-            <span class="contact-icon">📧</span>
-            <div>
-              <strong>Email</strong>
-              <p>contact@mdf.com</p>
+          <div class="bot-messages" id="botMessages">
+            <div class="bot-message bot-message--bot">
+              <div class="bot-bubble">
+                Bonjour ! Je suis l'assistant Mobilier de France. Comment puis-je vous aider aujourd'hui ?
+              </div>
             </div>
           </div>
-          <div class="contact-item">
-            <span class="contact-icon">🕐</span>
-            <div>
-              <strong>Horaires</strong>
-              <p>Lun - Ven : 9h - 18h</p>
-            </div>
+          <div class="bot-suggestions" id="botSuggestions">
+            <button class="suggestion-btn" onclick="sendSuggestion('Suivre ma livraison')">Suivre ma livraison</button>
+            <button class="suggestion-btn" onclick="sendSuggestion('Signaler un problème')">Signaler un problème</button>
+            <button class="suggestion-btn" onclick="sendSuggestion('Contacter le SAV')">Contacter le SAV</button>
+          </div>
+          <div class="bot-input">
+            <input type="text" id="botInput" placeholder="Posez votre question..." onkeydown="handleBotKey(event)" />
+            <button class="bot-send" onclick="sendBotMessage()">Envoyer</button>
           </div>
         </div>
-        <form class="contact-form" id="contactForm" onsubmit="handleContactForm(event)">
-          <div class="form-row">
+      </div>
+    </section>
+  </div>
+
+  <!-- ===================== ONGLET : CONTACT ===================== -->
+  <div class="tab-panel" id="tab-contact">
+    <section class="page-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Nous contacter</span>
+          <h2 class="section-title">Une question ? Écrivez-nous</h2>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-item">
+              <span class="contact-icon">📍</span>
+              <div>
+                <strong>Siège social</strong>
+                <p>France</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">📧</span>
+              <div>
+                <strong>Email</strong>
+                <p>contact@mdf.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">🕐</span>
+              <div>
+                <strong>Horaires</strong>
+                <p>Lun - Ven : 9h - 18h</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">💬</span>
+              <div>
+                <strong>Support en ligne</strong>
+                <p><button class="link-btn" onclick="switchTab('sav')">Accéder au chat →</button></p>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm" onsubmit="handleContactForm(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">Prénom</label>
+                <input type="text" id="firstName" placeholder="Jean" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">Nom</label>
+                <input type="text" id="lastName" placeholder="Dupont" required />
+              </div>
+            </div>
             <div class="form-group">
-              <label for="firstName">Prénom</label>
-              <input type="text" id="firstName" placeholder="Jean" required />
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="jean.dupont@email.com" required />
             </div>
             <div class="form-group">
-              <label for="lastName">Nom</label>
-              <input type="text" id="lastName" placeholder="Dupont" required />
+              <label for="subject">Sujet</label>
+              <select id="subject">
+                <option value="">Choisir un sujet</option>
+                <option value="livraison">Suivi de livraison</option>
+                <option value="sav">Service après-vente</option>
+                <option value="app">Application mobile</option>
+                <option value="autre">Autre</option>
+              </select>
             </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="jean.dupont@email.com" required />
-          </div>
-          <div class="form-group">
-            <label for="subject">Sujet</label>
-            <select id="subject">
-              <option value="">Choisir un sujet</option>
-              <option value="livraison">Suivi de livraison</option>
-              <option value="sav">Service après-vente</option>
-              <option value="app">Application mobile</option>
-              <option value="autre">Autre</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" rows="4" placeholder="Votre message..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary btn-full">Envoyer le message</button>
-          <div class="form-success" id="formSuccess">Message envoyé ! Nous vous répondrons sous 24h.</div>
-        </form>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" rows="4" placeholder="Votre message..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Envoyer le message</button>
+            <div class="form-success" id="formSuccess">Message envoyé ! Nous vous répondrons sous 24h.</div>
+          </form>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <!-- FOOTER -->
+  <!-- ===================== FOOTER ===================== -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -342,10 +358,10 @@
         <div class="footer-links">
           <h4>Navigation</h4>
           <ul>
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#app">Application</a></li>
-            <li><a href="#qualite">Qualité</a></li>
-            <li><a href="#sav">Assistance</a></li>
+            <li><a href="#" onclick="switchTab('accueil')">Accueil</a></li>
+            <li><a href="#" onclick="switchTab('app')">Application</a></li>
+            <li><a href="#" onclick="switchTab('qualite')">Qualité</a></li>
+            <li><a href="#" onclick="switchTab('sav')">Assistance</a></li>
           </ul>
         </div>
         <div class="footer-links">
@@ -353,7 +369,7 @@
           <ul>
             <li><a href="privacy-policy.html">Politique de confidentialité</a></li>
             <li><a href="support.html">Support</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" onclick="switchTab('contact')">Contact</a></li>
           </ul>
         </div>
       </div>
