@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support - Mobilier de France</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    .legal-hero {
+      background: var(--color-primary);
+      padding: 140px 0 64px;
+      text-align: center;
+    }
+    .legal-hero h1 {
+      font-family: var(--font-heading);
+      color: var(--color-white);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 12px;
+    }
+    .legal-hero p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+    }
+    .support-content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-secondary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 48px;
+      transition: gap 0.2s ease;
+    }
+    .back-link:hover { gap: 12px; }
+    .support-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+    .support-card {
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      transition: all var(--transition);
+    }
+    .support-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: var(--color-secondary);
+    }
+    .support-card-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .support-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      color: var(--color-primary);
+      margin-bottom: 10px;
+    }
+    .support-card p {
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .support-card a {
+      font-size: 0.9rem;
+      color: var(--color-secondary);
+      font-weight: 600;
+    }
+    .faq-section h2 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      color: var(--color-primary);
+      margin-bottom: 32px;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--color-border);
+      padding: 20px 0;
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--color-primary);
+      gap: 16px;
+    }
+    .faq-toggle {
+      font-size: 1.2rem;
+      color: var(--color-secondary);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      font-weight: 300;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      font-size: 0.9rem;
+      color: var(--color-text-light);
+      line-height: 1.8;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-top: 12px;
+    }
+    .faq-item.open .faq-toggle {
+      transform: rotate(45deg);
+    }
+    .contact-support {
+      background: var(--color-primary);
+      border-radius: var(--radius);
+      padding: 48px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .contact-support h2 {
+      font-family: var(--font-heading);
+      color: var(--color-white);
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+    .contact-support p {
+      color: rgba(255,255,255,0.65);
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 640px) {
+      .support-grid { grid-template-columns: 1fr; }
+      .contact-support { padding: 32px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar scrolled" style="position: relative; background: white; box-shadow: 0 2px 20px rgba(0,0,0,0.08);">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-mdf">MDF</span>
+        <span class="logo-text" style="color: var(--color-text);">Mobilier de France</span>
+      </a>
+    </div>
+  </nav>
+
+  <div class="legal-hero">
+    <h1>Centre de Support</h1>
+    <p>Comment pouvons-nous vous aider ?</p>
+  </div>
+
+  <div class="support-content">
+    <a href="index.html" class="back-link">← Retour à l'accueil</a>
+
+    <!-- Canaux de contact -->
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="support-card-icon">📧</div>
+        <h3>Email</h3>
+        <p>Pour toute question non urgente. Nous répondons sous 24h ouvrées.</p>
+        <a href="mailto:support@mdf.com">support@mdf.com</a>
+      </div>
+      <div class="support-card">
+        <div class="support-card-icon">💬</div>
+        <h3>Assistant virtuel</h3>
+        <p>Disponible 24h/24, 7j/7 pour répondre à vos questions courantes.</p>
+        <a href="index.html#sav">Accéder au chat →</a>
+      </div>
+      <div class="support-card">
+        <div class="support-card-icon">📋</div>
+        <h3>Signaler un problème</h3>
+        <p>Problème avec l'application ou une livraison ? Signalez-le ici.</p>
+        <a href="mailto:bugs@mdf.com">bugs@mdf.com</a>
+      </div>
+      <div class="support-card">
+        <div class="support-card-icon">🔒</div>
+        <h3>Confidentialité</h3>
+        <p>Questions relatives à vos données personnelles et au RGPD.</p>
+        <a href="privacy-policy.html">Voir la politique →</a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq-section">
+      <h2>Questions fréquentes</h2>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          Comment suivre ma livraison ?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Vous pouvez suivre votre livraison directement via l'application mobile Mobilier de France.
+          Téléchargez-la sur l'App Store ou Google Play, connectez-vous avec votre compte client,
+          et accédez à la section "Mes commandes". Vous verrez le statut en temps réel de votre livraison,
+          les photos de contrôle qualité et la position de votre chauffeur.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          Comment créer un compte sur l'application ?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Les comptes sur l'application MDF sont créés par nos équipes.
+          Si vous êtes client, votre compte est automatiquement créé lors de votre première commande.
+          Si vous êtes fournisseur, chauffeur ou responsable showroom, contactez votre responsable
+          MDF pour obtenir vos identifiants.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          J'ai reçu un meuble endommagé, que faire ?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          En cas de meuble endommagé lors de la livraison :
+          1. Signalez-le immédiatement au chauffeur lors de la livraison.
+          2. Prenez des photos des dommages.
+          3. Notez vos réserves sur le bon de livraison.
+          4. Contactez notre SAV dans les 48h à sav@mdf.com en joignant vos photos.
+          Notre équipe prendra en charge votre dossier sous 24h ouvrées.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          L'application ne fonctionne pas, que faire ?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Si vous rencontrez un problème avec l'application :
+          1. Vérifiez votre connexion internet.
+          2. Fermez et relancez l'application.
+          3. Vérifiez que votre application est à jour (App Store / Google Play).
+          4. Redémarrez votre téléphone.
+          Si le problème persiste, écrivez-nous à bugs@mdf.com en décrivant le problème
+          et en précisant votre modèle de téléphone et version du système.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          Comment supprimer mon compte et mes données ?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          Conformément au RGPD, vous pouvez demander la suppression de votre compte et de vos données
+          en envoyant un email à privacy@mdf.com avec votre demande.
+          Nous traiterons votre demande sous 30 jours. Certaines données peuvent être conservées
+          pour des obligations légales (3 ans maximum).
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          Je suis fournisseur, comment accéder à mon espace ?
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          En tant que fournisseur partenaire MDF, vous avez accès à un espace dédié dans l'application.
+          Votre responsable MDF vous a remis vos identifiants de connexion. Si vous les avez perdus,
+          contactez votre interlocuteur habituel chez Mobilier de France ou écrivez à support@mdf.com.
+        </div>
+      </div>
+    </div>
+
+    <!-- Contact block -->
+    <div class="contact-support">
+      <h2>Vous n'avez pas trouvé la réponse ?</h2>
+      <p>Notre équipe support est disponible du lundi au vendredi, de 9h à 18h.</p>
+      <a href="mailto:support@mdf.com" class="btn btn-primary">Contacter le support</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 Mobilier de France. Tous droits réservés. — <a href="privacy-policy.html" style="color: rgba(255,255,255,0.5);">Confidentialité</a> · <a href="support.html" style="color: rgba(255,255,255,0.5);">Support</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(item) {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+  </script>
+</body>
+</html>
